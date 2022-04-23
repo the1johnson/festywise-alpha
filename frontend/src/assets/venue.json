@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Le Petit Paris 75",
+        "date": "12.14.2022",
+        "startTime": "12pm",
+        "endTime": "2pm",
+        "genre": "Acoustic Rock",
+        "capacity": 50,
+        "imageUrl": "https://s3.amazonaws.com/spinne-images/588336/0_0.png",
+        "lat": 37.797837,
+        "lng": -122.405928
+    },
+    {
+        "name": "Bissap Baobab Village / Little Baobab",
+        "date": "12.30.2022",
+        "startTime": "2pm",
+        "endTime": "6pm",
+        "genre": "Wold Music",
+        "capacity": 25,
+        "imageUrl": "https://images.squarespace-cdn.com/content/v1/6197ec590ab33e17a984c106/1637346395294-9M2YCDYUTR1CUF7ZZ489/bissap+cooking+2.jpg",
+        "lat": 37.760362945407664,
+        "lng": -122.41886719320644
+    }
+]
