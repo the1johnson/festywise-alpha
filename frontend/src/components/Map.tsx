@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState, useRef, useEffect} from "react";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 
@@ -13,10 +13,10 @@ const Map: React.FC<MapProps> = ({
   style,
   ...options
 }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [map, setMap] = React.useState<google.maps.Map>();
+  const ref = useRef<HTMLDivElement>(null);
+  const [map, setMap] = useState<google.maps.Map>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {}));
     }
@@ -30,7 +30,7 @@ const Map: React.FC<MapProps> = ({
     }
   }, [map, options]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (map) {
       ["click", "idle"].forEach((eventName) =>
         google.maps.event.clearListeners(map, eventName)

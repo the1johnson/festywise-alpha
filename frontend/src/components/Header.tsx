@@ -1,10 +1,13 @@
-import * as React from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 import festyWiseLogo from "../assets/festyWiseLogo.png";
 import defaultAvatar from "../assets/bakuDefault.png";
 
 export default function Header() {
+    const authorized = useSelector((state: any) => state.auth.authorized);
+
     return (
         <header className="py-2 px-4 flex items-center">
             <div>
@@ -19,9 +22,12 @@ export default function Header() {
             </nav>
 
             <div className="ml-20">
-                <img src={defaultAvatar} alt="TODO: Avatar" className="w-16 h-16 overflow-hidden rounded-full border-zinc-900 border-2" />
-            </div>
+                {authorized
+                    ? <Link to="settings"><img src={defaultAvatar} alt="TODO: Avatar" className="w-16 h-16 overflow-hidden rounded-full border-zinc-900 border-2" /></Link>
+                    : <div><Link to="login" className="bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Login</Link><Link to="register" className="ml-5 bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Register</Link></div>
+                }
 
+            </div>
         </header>
     );
 };
