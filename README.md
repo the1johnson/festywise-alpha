@@ -5,6 +5,7 @@ Currently the app is far from complete but to share some of my progress I am upl
 
 ## Setup
 ```
+sudo mkdir tmp/db
 docker-compose build
 docker-compose up
 docker-compose run backend rake db:setup
