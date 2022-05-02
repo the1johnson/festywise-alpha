@@ -1,7 +1,9 @@
 module Api
     class UsersController < ApplicationController
-        @@user_render_except = [:password]
-        ALLOWED_DATA = %[username email].freeze
+        before_action :authorized, only: [:auto_login]
+
+        @@user_render_except = [:password_digest]
+        ALLOWED_DATA = %[username email first_name last_name password].freeze
 
         def index
             users = User.all
@@ -15,21 +17,38 @@ module Api
 
         def create
             data = json_payload.select {|k| ALLOWED_DATA.include?(k)}
-            user = User.new(data)
-            if user.save
-                render json: user, except: @@user_render_except
+            @user = User.create(data)
+            
+            if @user.valid?
+                token = encode_token({user_id: @user.id})
+                render json: {user: @user, token: token}
             else
-                render json: {"error": "could not create user"}
+                render json: {"message": @user.errors.full_messages.join(', ')}, status: :bad_request
             end
         end
 
         def destroy
             user = User.find(params[:id])
             if user.destroy
-                render json: {"success": "user: " + user.username + " destoryed"}
+                render json: {"message": "user: #{user.username} destoryed"}
             else
-                render json: {"error": "could not destroy user"}
+                render json: {"message": "could not destroy user"}, status: :internal_server_error
             end
+        end
+
+        def login
+            @user = User.find_by(username: params[:username])
+
+            if @user && @user.authenticate(params[:password])
+                token = encode_token({user_id: @user.id})
+                render json: {user: @user, token: token}
+            else
+                render json: {"message": "Wrong login"}, status: :bad_request
+            end
+        end
+
+        def auto_login
+            render json: @user
         end
     end
 end

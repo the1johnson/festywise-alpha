@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState} from "react";
 import { useEffect } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Map from "../components/Map";
@@ -12,11 +12,11 @@ const render = (status: Status) => {
 
 const MapView: React.FC = () => {
   const google = window.google;
-  const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
-  // const [venueData, setVenueData] = React.useState(venueJson) ;
-  const [venueData] = React.useState(venueJson);
-  const [zoom, setZoom] = React.useState(14); // initial zoom
-  const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
+  const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
+  // const [venueData, setVenueData] = useState(venueJson) ;
+  const [venueData] = useState(venueJson);
+  const [zoom, setZoom] = useState(14); // initial zoom
+  const [center, setCenter] = useState<google.maps.LatLngLiteral>({
     lat: 37.7749,
     lng: -122.4194,
   });
@@ -47,7 +47,7 @@ const MapView: React.FC = () => {
         ))}
       </div>
 
-      <Wrapper apiKey={"AIzaSyCSEMcdJBfR8mZMzVOHEq3OlQT2tAhfxw4"} render={render}>
+      <Wrapper apiKey={process.env.REACT_APP_GOOGLE_API_KEY as string} render={render}>
         <Map
           center={center}
           onIdle={onIdle}
