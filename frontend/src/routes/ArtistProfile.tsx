@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ArtistProfile (){
+export default function ArtistProfile() {
     return (
         <>
             <div className='bg-zinc-400 h-screen pt-20'>

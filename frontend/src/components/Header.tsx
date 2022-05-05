@@ -16,8 +16,8 @@ export default function Header() {
 
             <nav className="ml-auto">
                 <ul className="flex">
-                    <li className="mr-5"><Link to="venue" className="bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Host</Link></li>
-                    <li><Link to="artist" className="bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Perform</Link></li>
+                    <li className="mr-5"><Link to="new_venue" className="bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Host</Link></li>
+                    <li><Link to="new_artist" className="bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Perform</Link></li>
                 </ul>
             </nav>
 

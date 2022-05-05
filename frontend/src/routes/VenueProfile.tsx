@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function VenueProfile (){
+export default function VenueProfile() {
     return (
         <>
             <div className='bg-zinc-400 h-screen pt-20'>
