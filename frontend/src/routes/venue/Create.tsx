@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
 import FormWrapper from '../../components/form/FormWrapper';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
+import SelectFormGroup from '../../components/form/SelectFormGroup';
+import CheckboxFormGroup from '../../components/form/CheckboxFormGroup';
 
-export default function CreateVenue() {
-    const createVenueApiUrl = process.env.REACT_APP_AJAX_URL + `/users/1/venues`;
+export default function VenueCreate() {
+    const navigate = useNavigate();
+    const userId = useSelector((state: any) => state.auth.userId);
+    const createVenueApiUrl = `${process.env.REACT_APP_AJAX_URL}/users/${userId}/venues`;
     const [venueName, setVenueName] = useState('');
     const [contactName, setContactName] = useState('');
     const [contactTitle, setContactTitle] = useState('');
@@ -11,8 +18,24 @@ export default function CreateVenue() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [capacity, setCapacity] = useState('');
+    const [performanceType, setPerformanceType] = useState('');
+    const [genre, setGenre] = useState('');
+    const [equipment, setEquipment] = useState('');
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+
+    const performanceTypeOptionItems = [
+        { id: 0, value: 'Live Music', label: 'Live Music' }
+    ];
+    const genreOptionItems = [
+        { id: 0, value: 'Bluegrass', label: 'Bluegrass' }
+    ];
+    const equipmentOptionItems = [
+        { id: 0, value: 'Sound System', label: 'Sound System' },
+        { id: 1, value: 'Microphone', label: 'Microphone' },
+        { id: 2, value: 'Monitor', label: 'Monitor' },
+        { id: 3, value: 'XLR Cable', label: 'XLR Cable' }
+    ];
 
     function handleSubmit(e: any) {
         e.preventDefault();
@@ -29,7 +52,11 @@ export default function CreateVenue() {
                             contact_title: contactTitle,
                             website: website,
                             phone_number: phoneNumber,
-                            capacity: capacity
+                            email: emailAddress,
+                            capacity: capacity,
+                            performance_type: performanceType,
+                            genre: genre,
+                            equipment_list: equipment
                         })
                     }
                 );
@@ -42,8 +69,8 @@ export default function CreateVenue() {
                 let actualData = await response.json();
                 setData(actualData);
                 setError(null);
-                console.log(actualData)
-                if (actualData) {
+                if (actualData.venue) {
+                    navigate("/new_venue_confirm", { replace: true });
                 }
             } catch (err: any) {
                 setError(err.message);
@@ -61,53 +88,9 @@ export default function CreateVenue() {
             <TextInputFormGroup fieldName="phone_number" onChange={setPhoneNumber} displayLabel='Phone Number' fieldValue={phoneNumber} />
             <TextInputFormGroup fieldName="email_address" onChange={setEmailAddress} displayLabel='Email Address' fieldValue={emailAddress} />
             <TextInputFormGroup fieldName="capacity" onChange={setCapacity} displayLabel='Capacity' fieldValue={capacity} />
-            <div>
-                <label htmlFor='username' className="block text-sm font-medium text-gray-700">Preferred Performance Type</label>
-                <select
-                    className='mt-1 p-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300'
-                >
-                    <option>Live Music</option>
-                </select>
-            </div>
-            <div>
-                <label htmlFor='username' className="block text-sm font-medium text-gray-700">Preferred Genre</label>
-                <select
-                    className='mt-1 p-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300'
-                >
-                    <option>Bluegrass</option>
-                </select>
-            </div>
-            <div>
-                <div className="block text-sm font-medium text-gray-700">Equipment</div>
-                <div>
-                    <input type="checkbox" name="location_preference" value="90" />
-                    <label htmlFor='username' className="ml-2 text-sm font-medium text-gray-700">Sound System</label>
-                    <input
-                        className='ml-2 p-2 rounded-md shadow-sm inline sm:text-sm border border-gray-300'
-                        type="number" />
-                </div>
-                <div>
-                    <input type="checkbox" name="location_preference" value="90" />
-                    <label htmlFor='username' className="ml-2 text-sm font-medium text-gray-700">Microphone</label>
-                    <input
-                        className='ml-2 p-2 rounded-md shadow-sm inline sm:text-sm border border-gray-300'
-                        type="number" />
-                </div>
-                <div>
-                    <input type="checkbox" name="location_preference" value="90" />
-                    <label htmlFor='username' className="ml-2 text-sm font-medium text-gray-700">Monitor</label>
-                    <input
-                        className='ml-2 p-2 rounded-md shadow-sm inline sm:text-sm border border-gray-300'
-                        type="number" />
-                </div>
-                <div>
-                    <input type="checkbox" name="location_preference" value="90" />
-                    <label htmlFor='username' className="ml-2 text-sm font-medium text-gray-700">XLR Cable</label>
-                    <input
-                        className='ml-2 p-2 rounded-md shadow-sm inline sm:text-sm border border-gray-300'
-                        type="number" />
-                </div>
-            </div>
+            <SelectFormGroup fieldName="performanceType" onChange={setPerformanceType} displayLabel='Preferred Performance Type' fieldValue={performanceType} optionItems={performanceTypeOptionItems} />
+            <SelectFormGroup fieldName="genre" onChange={setGenre} displayLabel='Preferred Genre' fieldValue={genre} optionItems={genreOptionItems} />
+            <CheckboxFormGroup fieldName="equipment" onChange={setEquipment} displayLabel='Equipment' fieldValue={equipment} optionItems={equipmentOptionItems} />
         </FormWrapper>
     );
 }

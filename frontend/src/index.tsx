@@ -15,11 +15,29 @@
  */
 
 import * as React from "react";
-import App from './App';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux'
+
 import store from './store'
+import App from './App';
+
+import BandCreate from "./routes/band/Create";
+import BandSubmissionConfirmation from "./routes/band/Confirmation";
+import BandsList from "./routes/band/List";
+import BandProfile from "./routes/band/Profile";
+
+import VenueCreate from "./routes/venue/Create";
+import VenueSubmissionConfirmation from "./routes/venue/Confirmation";
+import VenuesList from "./routes/venue/List";
+import VenueProfile from "./routes/venue/Profile";
+
+import ConfirmGigSubmission from "./routes/gig/Confirmation";
+
+import UserRegistration from "./routes/user/Registration";
+import UserLogin from "./routes/user/Login";
+import UserSettings from "./routes/user/Settings";
+import MapView from "./routes/MapView";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -28,7 +46,29 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<MapView />} />
+
+            <Route path="register" element={<UserRegistration />} />
+            <Route path="login" element={<UserLogin />} />
+            <Route path="settings" element={<UserSettings />} />
+
+            <Route path="new_venue" element={<VenueCreate />} />
+            <Route path="new_venue_confirm" element={<VenueSubmissionConfirmation />} />
+            <Route path="venues" element={<VenuesList />}>
+              <Route path=":venueId" element={<VenueProfile />} />
+            </Route>
+
+            <Route path="new_band" element={<BandCreate />} />
+            <Route path="new_band_confirm" element={<BandSubmissionConfirmation />} />
+            <Route path="bands" element={<BandsList />}>
+              <Route path=":bandId" element={<BandProfile />} />
+            </Route>
+
+            <Route path="new_gig_confirm" element={<ConfirmGigSubmission />} />
+          </Route>
+        </Routes>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

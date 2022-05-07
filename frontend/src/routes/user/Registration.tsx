@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { setAuth } from '../../features/authSlice';
+import { setAuth, setUserId } from '../../features/authSlice';
 
 import FormWrapper from '../../components/form/FormWrapper';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
@@ -42,6 +42,7 @@ export default function UserRegistration() {
                 setData(actualData);
                 setError(null);
                 if (actualData.token) {
+                    dispatch(setUserId(actualData.user.id));
                     dispatch(setAuth(true));
                     navigate("/", { replace: true });
                 }
