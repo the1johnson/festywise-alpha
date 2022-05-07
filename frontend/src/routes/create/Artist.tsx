@@ -3,12 +3,14 @@ import FormWrapper from '../../components/form/FormWrapper';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
 
 export default function CreateArtist() {
+    const createArtistApiUrl = process.env.REACT_APP_AJAX_URL + `/users/1/bands`;
     const [projectName, setProjectName] = useState('');
     const [performerCount, setPerformerCount] = useState('');
     const [website, setWebsite] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
-
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
     const [socialFacebook, setSocialFacebook] = useState('');
     const [socialYoutube, setSocialYoutube] = useState('');
     const [socialSoundcloud, setSocialSoundcloud] = useState('');
@@ -16,6 +18,44 @@ export default function CreateArtist() {
 
     function handleSubmit(e: any) {
         e.preventDefault();
+        const getData = async () => {
+            try {
+                const response = await fetch(
+                    createArtistApiUrl,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: projectName,
+                            member_count: performerCount,
+                            website: website,
+                            phone_number: phoneNumber,
+                            email: email,
+                            social_facebook: socialFacebook,
+                            social_youtube: socialYoutube,
+                            social_soundcloud: socialSoundcloud,
+                            social_bandcamp: socialBandpage
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(
+                        `This is an HTTP error: The status is ${response.status}`
+                    );
+                }
+                let actualData = await response.json();
+                setData(actualData);
+                setError(null);
+                console.log(actualData)
+                if (actualData) {
+                }
+            } catch (err: any) {
+                setError(err.message);
+                setData(null);
+            }
+        }
+        getData();
     }
 
     return (

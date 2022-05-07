@@ -3,6 +3,7 @@ import FormWrapper from '../../components/form/FormWrapper';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
 
 export default function CreateVenue() {
+    const createVenueApiUrl = process.env.REACT_APP_AJAX_URL + `/users/1/venues`;
     const [venueName, setVenueName] = useState('');
     const [contactName, setContactName] = useState('');
     const [contactTitle, setContactTitle] = useState('');
@@ -10,9 +11,46 @@ export default function CreateVenue() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [capacity, setCapacity] = useState('');
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
 
     function handleSubmit(e: any) {
         e.preventDefault();
+        const getData = async () => {
+            try {
+                const response = await fetch(
+                    createVenueApiUrl,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: venueName,
+                            contact_name: contactName,
+                            contact_title: contactTitle,
+                            website: website,
+                            phone_number: phoneNumber,
+                            capacity: capacity
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(
+                        `This is an HTTP error: The status is ${response.status}`
+                    );
+                }
+                let actualData = await response.json();
+                setData(actualData);
+                setError(null);
+                console.log(actualData)
+                if (actualData) {
+                }
+            } catch (err: any) {
+                setError(err.message);
+                setData(null);
+            }
+        }
+        getData();
     }
     return (
         <FormWrapper onSubmit={handleSubmit} formHeader="Create Venue">
