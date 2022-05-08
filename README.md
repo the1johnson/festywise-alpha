@@ -61,3 +61,5 @@ rails server
 npm install
 npm start
 ```
+# ToDos
+- Update docker to a production env build

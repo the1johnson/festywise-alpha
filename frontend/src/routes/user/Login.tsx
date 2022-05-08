@@ -7,7 +7,7 @@ import FormWrapper from '../../components/form/FormWrapper';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
 
 export default function UserLogin() {
-    const loginApiUrl = process.env.REACT_APP_AJAX_URL + `/login`;
+    const loginApiUrl = `${process.env.REACT_APP_AJAX_URL}/login`;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [data, setData] = useState(null);

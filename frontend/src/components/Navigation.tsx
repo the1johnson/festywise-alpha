@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+
 import defaultAvatar from "../assets/bakuDefault.png";
 import iconAddGroup from "../assets/iconAddGroup.svg";
 import iconAddVenue from "../assets/iconAddVenue.svg";
 import iconBands from "../assets/iconBands.svg";
 import iconSettings from "../assets/iconSettings.svg";
 import iconVenues from "../assets/iconVenues.svg";
+
 export default function Navigation() {
     const [navActive, setNavActive] = useState(false);
     const navLinks = [
@@ -18,6 +20,7 @@ export default function Navigation() {
     function toggleNav(){
         setNavActive(!navActive);
     }
+
     return (
         <nav className="relative">
             <button className="block" onClick={toggleNav}><img src={defaultAvatar} alt="TODO: Avatar" className="w-16 h-16 overflow-hidden rounded-full border-zinc-900 border-2" /></button>
