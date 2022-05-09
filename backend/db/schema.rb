@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_232322) do
   create_table "venues", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
+    t.string "image_url"
     t.string "contact_name"
     t.string "contact_title"
     t.string "website"

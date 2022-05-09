@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Map from "../components/Map";
 import Marker from "../components/Marker";
 import VenueCard from "../components/VenueCard";
+import useFetch from '../hooks/useFetch';
+import { setVenues } from '../features/venuesSlice';
 import venueJson from "../assets/venue.json";
 
 const render = (status: Status) => {
@@ -12,9 +14,11 @@ const render = (status: Status) => {
 
 const MapView: React.FC = () => {
   const google = window.google;
+  const dispatch = useDispatch();
   const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
-  // const [venueData, setVenueData] = useState(venueJson) ;
-  const [venueData] = useState(venueJson);
+  const { data, loading } = useFetch(`${process.env.REACT_APP_AJAX_URL}/all_venues`);
+  dispatch(setVenues(data));
+  const venueData = data;
   const [zoom, setZoom] = useState(14); // initial zoom
   const [center, setCenter] = useState<google.maps.LatLngLiteral>({
     lat: 37.7749,
