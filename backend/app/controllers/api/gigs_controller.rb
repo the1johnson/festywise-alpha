@@ -1,7 +1,10 @@
 module Api
     class GigsController < ApplicationController
         ALLOWED_DATA = %[venue_id name payment genre description start_date end_date].freeze
-
+        def index
+            gigs = Gig.all
+            render json: gigs
+        end
         def create
             data = json_payload.select {|k| ALLOWED_DATA.include?(k)}
             venue = Venue.find(data[:venue_id])

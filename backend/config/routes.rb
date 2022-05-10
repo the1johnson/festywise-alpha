@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     defaults format: :json do
-      resources :gigs
+      resources :gigs, shallow: true do
+        resources :gig_applications
+      end
       resources :users, shallow: true do
         resources :venues, :bands
       end

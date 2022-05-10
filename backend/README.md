@@ -8,6 +8,7 @@ sudo -i -u postgres psql
 rails g resource Venues
 rails routes
 rails db:rollback
+rails voltron:seed_all
 ```
 
 # Todos
