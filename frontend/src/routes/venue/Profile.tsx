@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import AddGigToVenueForm from '../../components/form/AddGigToVenueForm';
+import GigManager from '../../components/gigs/Manager';
 
 export default function VenueProfile() {
     const params = useParams();
@@ -16,7 +16,7 @@ export default function VenueProfile() {
             <div>{venue.email}</div>
             <div>{venue.performance_type} - {venue.genre}</div>
 
-            <AddGigToVenueForm venueId={params.venueId} defaultGenre={venue.genre} />
+            <GigManager gigList={venue.gigs} venueId={params.venueId} defaultGenre={venue.genre} />            
         </div>
     );
 }
