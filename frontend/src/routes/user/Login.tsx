@@ -8,8 +8,8 @@ import TextInputFormGroup from '../../components/form/TextInputFormGroup';
 
 export default function UserLogin() {
     const loginApiUrl = `${process.env.REACT_APP_AJAX_URL}/login`;
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('test');
+    const [password, setPassword] = useState('test');
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const dispatch = useDispatch();

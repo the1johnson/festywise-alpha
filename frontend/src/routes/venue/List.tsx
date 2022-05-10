@@ -10,7 +10,7 @@ export default function VenuesList() {
     dispatch(setVenues(data));
     return (
         <GenericWrapper>
-            <h2 className='text-lg font-bold tracking-wide'>Venues List</h2>
+            <h1 className='text-lg font-bold tracking-wide'>Venues List</h1>
             <div className='flex grid grid-cols-2'>
                 <ul>
                     {data.map((venue: any) => {

@@ -28,32 +28,11 @@ export default function BandCreate() {
     const [socialSoundcloud, setSocialSoundcloud] = useState('');
     const [socialBandcamp, setSocialBandcamp] = useState('');
 
-    const performanceTypeOptionItems = [
-        { id: 0, value: 'Live Music', label: 'Live Music' }
-    ];
-    const genreOptionItems = [
-        { id: 0, value: 'Bluegrass', label: 'Bluegrass' }
-    ];
-    const equipmentOptionItems = [
-        { id: 0, value: 'Sound System', label: 'Sound System' },
-        { id: 1, value: 'Microphone', label: 'Microphone' },
-        { id: 2, value: 'Monitor', label: 'Monitor' },
-        { id: 3, value: 'XLR Cable', label: 'XLR Cable' }
-    ];
-    const performanceDurationOptionItems = [
-        { id: 0, value: 30, label: '30 min' },
-        { id: 1, value: 45, label: '45 min' },
-        { id: 2, value: 60, label: '60 min' },
-        { id: 3, value: 90, label: '90 min' },
-        { id: 4, value: 120, label: '120 min' }
-    ];
-
-    const locationPreferenceOptionItems = [
-        { id: 0, value: 'San Francisco', label: 'San Francisco' },
-        { id: 1, value: 'East Bay', label: 'East Bay' },
-        { id: 2, value: 'South Bay', label: 'South Bay' },
-        { id: 3, value: 'North Bay', label: 'North Bay' }
-    ];
+    const performanceTypeOptionItems = useSelector((state: any) => state.optionItems.performance_type);
+    const genreOptionItems = useSelector((state: any) => state.optionItems.genre);
+    const equipmentOptionItems = useSelector((state: any) => state.optionItems.equipment);
+    const performanceDurationOptionItems = useSelector((state: any) => state.optionItems.performance_duration);
+    const locationPreferenceOptionItems = useSelector((state: any) => state.optionItems.location_preference);
 
     function handleSubmit(e: any) {
         e.preventDefault();
