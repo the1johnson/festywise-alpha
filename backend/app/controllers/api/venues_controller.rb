@@ -23,8 +23,8 @@ module Api
             render json: venue
         end
         def all
-            venues = Venue.all
-            render json: venues
+            venues = Venue.includes(:gigs).all
+            render json: venues, include: ['gigs']
         end
     end
 end

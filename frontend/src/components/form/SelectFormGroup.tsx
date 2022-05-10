@@ -23,8 +23,10 @@ export default function SelectFormGroup(params: SelectFormGroupType) {
                 name={params.fieldName}
                 id={params.fieldName}
                 onChange={handleFieldChange}
+                value={params.fieldValue}
                 className='mt-1 p-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300'
             >
+                <option></option>
                 {params.optionItems.map((option) => {
                     return <option key={option.id} value={option.value}>{option.label}</option>
                 })}

@@ -16,7 +16,7 @@ export default function VenueProfile() {
             <div>{venue.email}</div>
             <div>{venue.performance_type} - {venue.genre}</div>
 
-            <AddGigToVenueForm venueId={params.venueId} />
+            <AddGigToVenueForm venueId={params.venueId} defaultGenre={venue.genre} />
         </div>
     );
 }
