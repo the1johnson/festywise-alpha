@@ -47,7 +47,7 @@ const MapView: React.FC = () => {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <div className="100vh px-4 w-64 overflow-y-auto bg-zinc-400">
+        <div className="h-screen px-4 w-64 overflow-y-auto bg-zinc-400">
           {venueData.map((venue, i: number) => (
             <VenueCard key={i} {...venue} />
           ))}

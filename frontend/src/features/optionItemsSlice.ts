@@ -35,7 +35,7 @@ export const optionItemsSlice = createSlice({
     application_status: [
       { id: 0, value: 'pending', label: 'Pending' },
       { id: 1, value: 'denied', label: 'Denied' },
-      { id: 2, value: 'accepted', label: 'Accepted' }
+      { id: 2, value: 'approved', label: 'Approved' }
     ]
   },
   reducers: {

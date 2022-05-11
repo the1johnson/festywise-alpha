@@ -17,6 +17,16 @@ module Api
                 render json: {"message": application.errors.full_messages.join(', ')}, status: :bad_request
             end
         end
+        def update
+            data = json_payload.select {|k| ALLOWED_DATA.include?(k)}
+            application = GigApplication.find(params[:id])
+            application.status = data[:status]
+            if application.save
+                render json: {application: application}
+            else
+                render json: {"message": application.errors.full_messages.join(', ')}, status: :bad_request
+            end
+        end
     end
 end
 

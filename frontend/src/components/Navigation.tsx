@@ -24,7 +24,7 @@ export default function Navigation() {
     return (
         <nav className="relative">
             <button className="block" onClick={toggleNav}><img src={defaultAvatar} alt="TODO: Avatar" className="w-16 h-16 overflow-hidden rounded-full border-zinc-900 border-2" /></button>
-            <ul className={"fixed right-6 z-40 bg-white rounded-lg shadow p-1 grid gap-1 transition-all ease-out " + (navActive ? 'top-24 opacity-1' : 'top-20 opacity-0')}>
+            <ul className={"fixed right-6 z-40 bg-white rounded-lg shadow p-1 grid gap-1 transition-all ease-out top-24 " + (navActive ? 'block' : 'hidden')}>
                 {navLinks.map((item) => <li key={item.id} onClick={toggleNav}><Link to={item.link}><img src={item.svg} alt={item.label} className="w-10" /></Link></li>)}
             </ul>
         </nav>

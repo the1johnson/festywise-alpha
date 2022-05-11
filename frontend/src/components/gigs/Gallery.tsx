@@ -1,8 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { GigsDataType } from '../../custom'
-import {setActive} from '../../features/modalSlice'
-
+import {setActive, setVenue, setGig} from '../../features/modalSlice'
+type VenueData = {
+    id: number;
+    name: string;
+}
 type GigGalleryType = {
+    venue: VenueData;
     gigs: Array<GigsDataType>;
 }
 export default function GigGallery(params: GigGalleryType) {
@@ -12,8 +16,10 @@ export default function GigGallery(params: GigGalleryType) {
 
         return `${event.getMonth() + 1}-${event.getDate()}-${event.getFullYear()} @${event.getHours()}:${event.getMinutes()}`
     }
-    function showModal(){
+    function showModal(gigId:number){
         dispatch(setActive(true));
+        dispatch(setVenue(params.venue));
+        dispatch(setGig(params.gigs.filter((g: any) => g.id == gigId)[0]));
     }
     return (
         <div className="py-2">
@@ -25,7 +31,9 @@ export default function GigGallery(params: GigGalleryType) {
                                 <div className="flex items-center">
                                     <div className="font-bold text-lg">{gig.name}</div>
                                     <div className="ml-auto">
-                                        <button onClick={showModal} className='ml-auto justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Apply</button>
+                                        <button onClick={()=>{
+                                            showModal(gig.id)
+                                        }} className='justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700'>Apply</button>
                                     </div>
                                 </div>
                                 <div className="text-xs">

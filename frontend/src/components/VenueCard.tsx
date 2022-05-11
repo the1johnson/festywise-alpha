@@ -3,6 +3,7 @@ import GigGallery from './gigs/Gallery'
 import { GigsDataType } from '../custom'
 
 interface VenueCardProps {
+    id: number;
     name: string;
     genre: string;
     capacity: number;
@@ -19,7 +20,7 @@ class VenueCard extends React.Component<VenueCardProps> {
                         <div><strong>{this.props.name}</strong></div>
                         <div className="ml-auto text-sm"><strong>Capacity:</strong> {this.props.capacity}</div>
                     </div>
-                    <GigGallery gigs={this.props.gigs} />
+                    <GigGallery venue={this.props} gigs={this.props.gigs} />
                 </div>
             </div>
         );
