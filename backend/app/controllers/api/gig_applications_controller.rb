@@ -4,7 +4,7 @@ module Api
         def index
             gigs = Gig.find(params[:gig_id])
             applications = gigs.gig_applications
-            render json: applications
+            render json: applications, include: ['band']
         end
         def create
             data = json_payload.select {|k| ALLOWED_DATA.include?(k)}

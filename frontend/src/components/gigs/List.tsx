@@ -1,21 +1,20 @@
-type GigsType = {
-    name: string;
-    payment: string;
-    genre: string;
-    description: string;
-    start_date: string;
-    end_date: string;
-}
+import {GigsDataType} from '../../custom'
 type GigListType = {
-    gigs: Array<GigsType>;
+    gigs: Array<GigsDataType>;
+    toProfileTab: (id:number) => void;
 }
 export default function GigList(params: GigListType) {
+    function showGigProfile(id:number){
+        params.toProfileTab(id)
+    }
     return (<>
         <h3 className='font-bold tracking-wide'>Gigs List</h3>
         {params.gigs.length ?
             <ul>
                 {params.gigs.map((gig: any) => {
-                    return <li key={gig.id}>{gig.name}</li>
+                    return (<li className="cursor-pointer" key={gig.id} onClick={()=>{
+                        showGigProfile(gig.id)
+                    }}>{gig.name}</li>)
                 })}
             </ul>
             : <div>No gigs</div>

@@ -31,6 +31,11 @@ export const optionItemsSlice = createSlice({
       { id: 1, value: 'East Bay', label: 'East Bay' },
       { id: 2, value: 'South Bay', label: 'South Bay' },
       { id: 3, value: 'North Bay', label: 'North Bay' }
+    ],
+    application_status: [
+      { id: 0, value: 'pending', label: 'Pending' },
+      { id: 1, value: 'denied', label: 'Denied' },
+      { id: 2, value: 'accepted', label: 'Accepted' }
     ]
   },
   reducers: {

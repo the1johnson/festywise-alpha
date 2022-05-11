@@ -16,7 +16,7 @@ export default function VenueProfile() {
             <div>{venue.email}</div>
             <div>{venue.performance_type} - {venue.genre}</div>
 
-            <GigManager gigList={venue.gigs} venueId={params.venueId} defaultGenre={venue.genre} />            
+            <GigManager key={`${venue.id}_gigManager`} gigList={venue.gigs} venueId={params.venueId} defaultGenre={venue.genre} />            
         </div>
     );
 }

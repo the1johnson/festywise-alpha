@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
 import TextAreaFormGroup from '../../components/form/TextAreaFormGroup';
@@ -10,6 +11,7 @@ type AddGigToVenueFormType = {
 }
 export default function AddGigToVenueForm(params: AddGigToVenueFormType) {
     const nowTime = new Date();
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [payment, setPayment] = useState('');
     const [genre, setGenre] = useState(params.defaultGenre);
@@ -44,7 +46,9 @@ export default function AddGigToVenueForm(params: AddGigToVenueFormType) {
                     );
                 }
                 let actualData = await response.json();
-                console.log('add gig', actualData)
+                if(actualData.gig){
+                    navigate(`/venues/${params.venueId}`, { replace: true });
+                }
             } catch (err: any) {
             }
         }
