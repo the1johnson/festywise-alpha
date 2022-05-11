@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import defaultAvatar from "../assets/bakuDefault.png";
-import iconAddGroup from "../assets/iconAddGroup.svg";
-import iconAddVenue from "../assets/iconAddVenue.svg";
-import iconBands from "../assets/iconBands.svg";
-import iconSettings from "../assets/iconSettings.svg";
-import iconVenues from "../assets/iconVenues.svg";
+import iconAddGroup from "../assets/icon/addGroup.svg";
+import iconAddVenue from "../assets/icon/addVenue.svg";
+import iconBands from "../assets/icon/bands.svg";
+import iconSettings from "../assets/icon/settings.svg";
+import iconVenues from "../assets/icon/venues.svg";
 
 export default function Navigation() {
     const [navActive, setNavActive] = useState(false);

@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import useFetch from '../../hooks/useFetch';
-import iconDenySVG from '../../assets/iconDeny.svg'
-import iconApproveSVG from '../../assets/iconApprove.svg'
+import iconDenySVG from '../../assets/icon/deny.svg'
+import iconApproveSVG from '../../assets/icon/approve.svg'
 
 type GigsType = {
     name: string;
@@ -60,12 +60,12 @@ export default function GigProfile(params: GigProfileType) {
                                     <button onClick={() => {
                                         updateApplicationStatus('denied', application.id)
                                     }} className='justify-center p-1 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700'>
-                                        <img src={iconDenySVG} alt="Deny" className="h-5 w-5" />
+                                        <img src={iconDenySVG} alt="Deny Application" className="h-5 w-5" />
                                     </button>
                                     <button onClick={() => {
                                         updateApplicationStatus('approved', application.id)
                                     }} className='ml-2 justify-center p-1 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700'>
-                                        <img src={iconApproveSVG} alt="Approve" className="h-5 w-5" />
+                                        <img src={iconApproveSVG} alt="Approve Application" className="h-5 w-5" />
                                     </button>
                                 </div>
                             </div>

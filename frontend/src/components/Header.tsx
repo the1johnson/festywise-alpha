@@ -11,15 +11,17 @@ export default function Header() {
     return (
         <header className="py-2 px-4 flex items-center">
             <div>
-                <Link to="/"><img src={festyWiseLogo} alt="TODO: Logo" className="w-40" /></Link>
+                <Link to="/"><img src={festyWiseLogo} alt="Festywise Wizard Logo" className="w-40" /></Link>
             </div>
 
             <div className="ml-auto">
                 {authorized
                     ? <Navigation />
-                    : <div><Link to="login" className="bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Login</Link><Link to="register" className="ml-5 bg-zinc-300 border-zinc-900 border-2 font-bold px-4 py-2 rounded">Register</Link></div>
+                    : <div className="font-fenwick">
+                        <Link to="register">Register</Link>
+                        <Link to="login" className="ml-8 border-blue-500 text-blue-500 rounded border-2 py-1 px-2">Login</Link>
+                    </div>
                 }
-
             </div>
         </header>
     );

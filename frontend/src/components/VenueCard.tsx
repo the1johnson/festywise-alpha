@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GigGallery from './gigs/Gallery'
 import { GigsDataType } from '../custom'
 
@@ -10,21 +10,19 @@ interface VenueCardProps {
     image_url: string;
     gigs: Array<GigsDataType>;
 }
-class VenueCard extends React.Component<VenueCardProps> {
-    render() {
-        return (
-            <div className="mt-4 bg-zinc-50 border-zinc-900 border-2 rounded overflow-hidden shadow hover:shadow-lg transition duration-150">
-                <img src={this.props.image_url} alt="TODO: Venue" />
-                <div className="p-2">
-                    <div className="flex items-center">
-                        <div><strong>{this.props.name}</strong></div>
-                        <div className="ml-auto text-sm"><strong>Capacity:</strong> {this.props.capacity}</div>
-                    </div>
-                    <GigGallery venue={this.props} gigs={this.props.gigs} />
-                </div>
+export default function VenueCard(params: VenueCardProps) {
+    const [gigPayment, setGigPayment] = useState('');
+    return (
+        <div className="mt-4 rounded bg-white overflow-hidden shadow hover:shadow-lg">
+            <div className="relative">
+                <img src={params.image_url} alt={`${params.name}'s Venue Image`} />
+                <div className="absolute bottom-2 right-2 bg-white p-1 rounded-sm">{gigPayment}</div>
             </div>
-        );
-    }
-}
 
-export default VenueCard;
+            <div className="py-2 px-4">
+                <div className="font-bold text-lg">{params.name}</div>
+                <GigGallery venue={params} gigs={params.gigs} updatePayment={setGigPayment} />
+            </div>
+        </div>
+    );
+}

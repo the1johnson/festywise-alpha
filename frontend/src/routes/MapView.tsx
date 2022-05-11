@@ -59,6 +59,12 @@ const MapView: React.FC = () => {
             onIdle={onIdle}
             zoom={zoom}
             style={{ flexGrow: "1", height: "100vh" }}
+            styles={[
+              {
+                featureType: "poi",
+                stylers: [{ visibility: "off" }],
+              }
+            ]}
           >
             {clicks.map((latLng, i) => (
               <Marker key={i} position={latLng} />
