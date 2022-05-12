@@ -83,7 +83,10 @@ export default function GigApplicationModal(params: GigApplicationModalType) {
                         <div>
                             {hasApllied ?
                                 <div>
-                                    Thanks for applying
+                                    <div className='border-2 rounded bg-emerald-100/80 p-4 m-4 text-emerald-900'>
+                                        <GenericHeading label="Applied to Gig" />
+                                        Your application has been sent to {venue.name}. You will recieve a notification if you are approved to play.
+                                    </div>
                                 </div> : <div className='flex'>
                                     <div className='w-48 shrink-0 pr-4'>
                                         <img className='block' src={venue.image_url} alt={`${venue.name}'s Venue Image`} />
@@ -95,7 +98,7 @@ export default function GigApplicationModal(params: GigApplicationModalType) {
                                         <div>Capacity: {venue.capacity}</div>
                                     </div>
                                     <div className='border-l-2 pl-4'>
-                                        <GenericHeading label="Gig Application"/>
+                                        <GenericHeading label="Gig Application" />
                                         <div className='flex grid grid-cols-3 gap-3 mt-4'>
                                             <div className='font-bold text-lg'>Name</div>
                                             <div className='col-span-2'>{gig.name}</div>

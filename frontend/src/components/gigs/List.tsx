@@ -1,18 +1,17 @@
-import {GigsDataType} from '../../custom'
+import { GigsDataType } from '../../custom'
 type GigListType = {
     gigs: Array<GigsDataType>;
-    toProfileTab: (id:number) => void;
+    toProfileTab: (id: number) => void;
 }
 export default function GigList(params: GigListType) {
-    function showGigProfile(id:number){
+    function showGigProfile(id: number) {
         params.toProfileTab(id)
     }
     return (<>
-        <div>Gigs List</div>
         {params.gigs.length ?
-            <ul>
+            <ul className="list-disc list-inside">
                 {params.gigs.map((gig: any) => {
-                    return (<li className="cursor-pointer" key={gig.id} onClick={()=>{
+                    return (<li className="cursor-pointer" key={gig.id} onClick={() => {
                         showGigProfile(gig.id)
                     }}>{gig.name}</li>)
                 })}

@@ -7,7 +7,7 @@ import SelectFormGroup from '../../components/form/SelectFormGroup';
 import DateTimeFormGroup from '../../components/form/DateTimeFormGroup';
 type AddGigToVenueFormType = {
     venueId: string | undefined;
-    defaultGenre: string ;
+    defaultGenre: string;
 }
 export default function AddGigToVenueForm(params: AddGigToVenueFormType) {
     const nowTime = new Date();
@@ -46,7 +46,7 @@ export default function AddGigToVenueForm(params: AddGigToVenueFormType) {
                     );
                 }
                 let actualData = await response.json();
-                if(actualData.gig){
+                if (actualData.gig) {
                     navigate(`/venues/${params.venueId}`, { replace: true });
                 }
             } catch (err: any) {
@@ -55,14 +55,36 @@ export default function AddGigToVenueForm(params: AddGigToVenueFormType) {
         getData();
     }
     return (
-        <form className='' onSubmit={submitNewGig}>
-            <h3>Add Gig</h3>
-            <TextInputFormGroup fieldName='name' onChange={setName} displayLabel="Name" fieldValue={name} />
-            <TextInputFormGroup fieldName='payment' onChange={setPayment} displayLabel="Payment" fieldValue={payment} />
-            <SelectFormGroup fieldName="genre" onChange={setGenre} displayLabel='Preferred Genre' fieldValue={genre} optionItems={genreOptionItems} />
-            <TextAreaFormGroup fieldName='description' onChange={setDescription} displayLabel="Description" fieldValue={description} />
-            <DateTimeFormGroup dateFieldName="start_date" displayLabel="Start Time" dateFieldValue={startDate} onDateChange={setStartDate} />
-            <DateTimeFormGroup dateFieldName="end_date" displayLabel="End Time" dateFieldValue={endDate} onDateChange={setEndDate} />
+        <form onSubmit={submitNewGig}>
+            <TextInputFormGroup
+                fieldName='name'
+                onChange={setName}
+                displayLabel="Name"
+                fieldValue={name}
+            />
+            <TextInputFormGroup
+                fieldName='payment'
+                onChange={setPayment}
+                displayLabel="Payment"
+                fieldValue={payment}
+            />
+            <SelectFormGroup
+                fieldName="genre"
+                onChange={setGenre}
+                displayLabel='Preferred Genre'
+                fieldValue={genre} optionItems={genreOptionItems}
+            />
+            <TextAreaFormGroup
+                fieldName='description'
+                onChange={setDescription}
+                displayLabel="Description" fieldValue={description}
+            />
+            <DateTimeFormGroup fieldName="start_date"
+                displayLabel="Start Time" fieldValue={startDate} onDateChange={setStartDate}
+            />
+            <DateTimeFormGroup fieldName="end_date"
+                displayLabel="End Time" fieldValue={endDate} onDateChange={setEndDate}
+            />
             <div className='flex'>
                 <input type="submit" value="Submit" className='ml-auto justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' />
             </div>

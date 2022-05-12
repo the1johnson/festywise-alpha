@@ -11,13 +11,16 @@ export default function VenuesList() {
     dispatch(setVenues(data));
     return (
         <GenericWrapper>
-            <GenericHeading label="Venues List" />
             <div className='flex grid grid-cols-3'>
-                <ul>
-                    {data.map((venue: any) => {
-                        return <li key={venue.id}><Link to={`/venues/${venue.id}`}>{venue.name}</Link></li>;
-                    })}
-                </ul>
+                <div>
+                    <GenericHeading label="Venues List" />
+                    <ul className="mt-4 list-disc list-inside">
+                        {data.map((venue: any) => {
+                            return <li key={venue.id} className="mb-2"><Link to={`/venues/${venue.id}`}>{venue.name}</Link></li>;
+                        })}
+                    </ul>
+                </div>
+
                 <div className="col-span-2">
                     <Outlet />
                 </div>

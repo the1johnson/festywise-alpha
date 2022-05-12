@@ -25,6 +25,8 @@ const MapView: React.FC = () => {
     lat: 37.7749,
     lng: -122.4194,
   });
+  const applicationVenue = useSelector((state: any) => state.modal.venue);
+  const applicationGig = useSelector((state: any) => state.modal.gig);
 
   const onIdle = (m: google.maps.Map) => {
     setZoom(m.getZoom()!);
@@ -72,7 +74,7 @@ const MapView: React.FC = () => {
           </Map>
         </Wrapper>
       </div>
-      <GigApplicationModal isActive={modalIsActive} />
+      <GigApplicationModal isActive={modalIsActive} key={`${applicationVenue.id}_${applicationGig.id}`} />
     </>
   );
 };
