@@ -1,2 +1,2 @@
 # Add a test user
-User.create(username: "test1", password: "test1", email: "test1@email.com")
+# User.create(username: "test", password: "test", email: "test@email.com")

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
-    @@jwt_secret = 'sweetSecret'
-    before_action :authorized
+    @@jwt_secret = 'TODO:bakuBot2022'
+    before_action :authorized, only: [:auto_login]
 
     def json_payload
         HashWithIndifferentAccess.new(JSON.parse(request.raw_post))

@@ -40,7 +40,8 @@ docker-compose run backend rake db:migrate
   "username": "{{$randomUserName}}",
   "email": "{{$randomEmail}}",
   "first_name": "{{$randomFirstName}}",
-  "last_name": "{{$randomLastName}}"
+  "last_name": "{{$randomLastName}}",
+  "password": "test"
 }
 ```
 
@@ -60,3 +61,5 @@ rails server
 npm install
 npm start
 ```
+# ToDos
+- Update docker to a production env build

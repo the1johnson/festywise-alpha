@@ -1,7 +1,5 @@
 module Api
     class UsersController < ApplicationController
-        before_action :authorized, only: [:auto_login]
-
         @@user_render_except = [:password_digest]
         ALLOWED_DATA = %[username email first_name last_name password].freeze
 
