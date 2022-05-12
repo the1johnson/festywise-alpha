@@ -55,8 +55,8 @@ export default function AddGigToVenueForm(params: AddGigToVenueFormType) {
         getData();
     }
     return (
-        <form className='mt-4' onSubmit={submitNewGig}>
-            <h3 className='font-bold tracking-wide'>Add Gig</h3>
+        <form className='' onSubmit={submitNewGig}>
+            <h3>Add Gig</h3>
             <TextInputFormGroup fieldName='name' onChange={setName} displayLabel="Name" fieldValue={name} />
             <TextInputFormGroup fieldName='payment' onChange={setPayment} displayLabel="Payment" fieldValue={payment} />
             <SelectFormGroup fieldName="genre" onChange={setGenre} displayLabel='Preferred Genre' fieldValue={genre} optionItems={genreOptionItems} />

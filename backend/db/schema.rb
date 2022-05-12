@@ -79,6 +79,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_180804) do
     t.string "capacity"
     t.string "performance_type"
     t.string "genre"
+    t.string "street_address"
+    t.string "state"
+    t.string "city"
+    t.string "zip"
     t.decimal "lat", precision: 10, scale: 6
     t.decimal "lng", precision: 10, scale: 6
     t.datetime "created_at", null: false

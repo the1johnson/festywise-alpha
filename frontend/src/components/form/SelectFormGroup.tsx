@@ -10,6 +10,8 @@ type SelectFormGroupType = {
     displayLabel: string;
     fieldValue: string;
     optionItems: Array<SelectOptionItemType>;
+    labelClassList?: string;
+    selectClassList?: string;
 };
 
 export default function SelectFormGroup(params: SelectFormGroupType) {
@@ -17,20 +19,20 @@ export default function SelectFormGroup(params: SelectFormGroupType) {
         params.onChange(e.target.value);
     }
     return (
-        <div>
-            <label htmlFor={params.fieldName} className="block text-sm font-medium text-gray-700">{params.displayLabel}</label>
+        <>
+            <label htmlFor={params.fieldName} className={params.labelClassList}>{params.displayLabel}</label>
             <select
                 name={params.fieldName}
                 id={params.fieldName}
                 onChange={handleFieldChange}
                 value={params.fieldValue}
-                className='mt-1 p-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300'
+                className={params.selectClassList}
             >
                 <option></option>
                 {params.optionItems.map((option) => {
                     return <option key={option.id} value={option.value}>{option.label}</option>
                 })}
             </select>
-        </div>
+        </>
     );
 }

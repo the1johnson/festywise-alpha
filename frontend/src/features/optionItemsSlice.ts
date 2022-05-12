@@ -7,7 +7,9 @@ export const optionItemsSlice = createSlice({
       { id: 0, value: 'Any', label: 'Any' },
       { id: 1, value: 'Bluegrass', label: 'Bluegrass' },
       { id: 2, value: 'Folk', label: 'Folk' },
-      { id: 3, value: 'Acoustic Rock', label: 'Acoustic Rock' }
+      { id: 3, value: 'Acoustic Rock', label: 'Acoustic Rock' },
+      { id: 4, value: 'Rock', label: 'Rock' },
+      { id: 5, value: 'Electronic', label: 'Electronic' }
     ],
     performance_type: [
       { id: 0, value: 'Live Music', label: 'Live Music' },

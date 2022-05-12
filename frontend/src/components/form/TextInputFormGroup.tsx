@@ -4,21 +4,23 @@ type TextInputFormGroupType = {
     displayLabel: string;
     fieldValue: string;
     isPassword?: boolean;
+    labelClassList?: string;
+    inputClassList?: string;
 }
-export default function TextInputFormGroup(formGroup: TextInputFormGroupType) {
+export default function TextInputFormGroup(params: TextInputFormGroupType) {
     function handleFieldChange(e: any) {
-        formGroup.onChange(e.target.value);
+        params.onChange(e.target.value);
     }
     return (
-        <div>
-            <label htmlFor={formGroup.fieldName} className="block text-sm font-medium text-gray-700">{formGroup.displayLabel}</label>
+        <>
+            <label htmlFor={params.fieldName} className={params.labelClassList}>{params.displayLabel}</label>
             <input
-                className='mt-1 p-2 rounded-md shadow-sm block w-full sm:text-sm border border-gray-300'
-                value={formGroup.fieldValue}
+                className={params.inputClassList}
+                value={params.fieldValue}
                 onChange={handleFieldChange}
-                type={formGroup.isPassword ? 'password' : 'text'}
-                name={formGroup.fieldName}
-                id={formGroup.fieldName} />
-        </div>
+                type={params.isPassword ? 'password' : 'text'}
+                name={params.fieldName}
+                id={params.fieldName} />
+        </>
     );
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setAuth, setUserId } from '../../features/authSlice';
-
+import GenericHeading from '../../components/GenericHeading'
 import FormWrapper from '../../components/form/FormWrapper';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
 
@@ -52,9 +52,28 @@ export default function UserLogin() {
         getData();
     }
     return (
-        <FormWrapper onSubmit={handleSubmit} formHeader="Login">
-            <TextInputFormGroup fieldName='username' onChange={setUsername} displayLabel="Username" fieldValue={username} />
-            <TextInputFormGroup fieldName='password' onChange={setPassword} displayLabel="Password" fieldValue={password} isPassword={true} />
+        <FormWrapper onSubmit={handleSubmit} submitLabel="Login">
+            <GenericHeading label="Login to Festywise"/>
+            <div className='flex grid grid-cols-3 gap-3 mt-4'>
+                <TextInputFormGroup
+                    fieldName='username'
+                    onChange={setUsername}
+                    displayLabel="Username"
+                    fieldValue={username}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName='password'
+                    onChange={setPassword}
+                    displayLabel="Password"
+                    fieldValue={password}
+                    isPassword={true}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+            </div>
+
         </FormWrapper>
     );
 }

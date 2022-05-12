@@ -1,6 +1,6 @@
 module Api
     class VenuesController < ApplicationController
-        ALLOWED_DATA = %[name contact_name contact_title website phone_number email capacity performance_type genre].freeze
+        ALLOWED_DATA = %[name contact_name contact_title website phone_number email capacity performance_type genre street_address state city zip].freeze
     
         def index
             user = User.find(params[:user_id])

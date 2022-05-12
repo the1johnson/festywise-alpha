@@ -10,7 +10,6 @@ export default function VenueProfile() {
 
     return (
         <div>
-            <h2 className='text-lg font-bold tracking-wide'>Venue Profile: {params.venueId}</h2>
             <div>{venue.name}</div>
             <div>{venue.contact_name} - {venue.contact_title}</div>
             <div>{venue.email}</div>

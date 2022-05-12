@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-
+import GenericHeading from '../../components/GenericHeading'
 import FormWrapper from '../../components/form/FormWrapper';
 import TextInputFormGroup from '../../components/form/TextInputFormGroup';
 import SelectFormGroup from '../../components/form/SelectFormGroup';
@@ -81,21 +81,129 @@ export default function BandCreate() {
     }
 
     return (
-        <FormWrapper onSubmit={handleSubmit} formHeader="Create Band">
-            <TextInputFormGroup fieldName="name" onChange={setProjectName} displayLabel='Project Name' fieldValue={projectName} />
-            <SelectFormGroup fieldName="performance_type" onChange={setPerformanceType} displayLabel='Preferred Performance Type' fieldValue={performanceType} optionItems={performanceTypeOptionItems} />
-            <SelectFormGroup fieldName="genre" onChange={setGenre} displayLabel='Preferred Genre' fieldValue={genre} optionItems={genreOptionItems} />
-            <CheckboxFormGroup fieldName="performance_duration" onChange={setPerformanceDuration} displayLabel='Performance Duration' fieldValue={performanceDuration} optionItems={performanceDurationOptionItems} isRadio={true} />
-            <TextInputFormGroup fieldName="member_count" onChange={setMemberCount} displayLabel='How Many Artists' fieldValue={memberCount} />
-            <TextInputFormGroup fieldName="website" onChange={setWebsite} displayLabel='Website' fieldValue={website} />
-            <TextInputFormGroup fieldName="phone_number" onChange={setPhoneNumber} displayLabel='Phone Number' fieldValue={phoneNumber} />
-            <TextInputFormGroup fieldName="email" onChange={setEmail} displayLabel='Email' fieldValue={email} />
-            <TextInputFormGroup fieldName="social_facebook" onChange={setSocialFacebook} displayLabel='Facebook' fieldValue={socialFacebook} />
-            <TextInputFormGroup fieldName="social_youtube" onChange={setSocialYoutube} displayLabel='YouTube' fieldValue={socialYoutube} />
-            <TextInputFormGroup fieldName="social_soundcloud" onChange={setSocialSoundcloud} displayLabel='Sound Cloud' fieldValue={socialSoundcloud} />
-            <TextInputFormGroup fieldName="social_bandcamp" onChange={setSocialBandcamp} displayLabel='Band Camp' fieldValue={socialBandcamp} />
-            <CheckboxFormGroup fieldName="location_preference" onChange={setLocationPreference} displayLabel='Location Preferences' fieldValue={locationPreference} optionItems={locationPreferenceOptionItems} isRadio={true} />
-            <CheckboxFormGroup fieldName="equipment" onChange={setEquipment} displayLabel='Equipment Needs' fieldValue={equipment} optionItems={equipmentOptionItems} />
+        <FormWrapper onSubmit={handleSubmit} submitLabel="Create">
+            <GenericHeading label="Create Band" />
+            <div className='flex grid grid-cols-3 gap-3 mt-4'>
+                <TextInputFormGroup
+                    fieldName="name"
+                    onChange={setProjectName}
+                    displayLabel='Project Name'
+                    fieldValue={projectName}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <SelectFormGroup
+                    fieldName="performance_type"
+                    onChange={setPerformanceType}
+                    displayLabel='Preferred Performance Type'
+                    fieldValue={performanceType}
+                    optionItems={performanceTypeOptionItems}
+                    labelClassList="font-bold"
+                    selectClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <SelectFormGroup
+                    fieldName="genre"
+                    onChange={setGenre}
+                    displayLabel='Preferred Genre'
+                    fieldValue={genre}
+                    optionItems={genreOptionItems}
+                    labelClassList="font-bold"
+                    selectClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <CheckboxFormGroup
+                    fieldName="performance_duration"
+                    onChange={setPerformanceDuration}
+                    displayLabel='Performance Duration'
+                    fieldValue={performanceDuration}
+                    optionItems={performanceDurationOptionItems}
+                    isRadio={true}
+                    labelClassList="font-bold"
+                    boxWrapperClassList="col-span-2"
+                />
+                <TextInputFormGroup
+                    fieldName="member_count"
+                    onChange={setMemberCount}
+                    displayLabel='How Many Artists'
+                    fieldValue={memberCount}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName="website"
+                    onChange={setWebsite}
+                    displayLabel='Website'
+                    fieldValue={website}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName="phone_number"
+                    onChange={setPhoneNumber}
+                    displayLabel='Phone Number'
+                    fieldValue={phoneNumber}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName="email"
+                    onChange={setEmail}
+                    displayLabel='Email'
+                    fieldValue={email}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName="social_facebook"
+                    onChange={setSocialFacebook}
+                    displayLabel='Facebook'
+                    fieldValue={socialFacebook}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName="social_youtube"
+                    onChange={setSocialYoutube}
+                    displayLabel='YouTube'
+                    fieldValue={socialYoutube}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName="social_soundcloud"
+                    onChange={setSocialSoundcloud}
+                    displayLabel='Sound Cloud'
+                    fieldValue={socialSoundcloud}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <TextInputFormGroup
+                    fieldName="social_bandcamp"
+                    onChange={setSocialBandcamp}
+                    displayLabel='Band Camp'
+                    fieldValue={socialBandcamp}
+                    labelClassList="font-bold"
+                    inputClassList="col-span-2 p-2 rounded-md shadow-sm block w-full border border-gray-300"
+                />
+                <CheckboxFormGroup
+                    fieldName="location_preference"
+                    onChange={setLocationPreference}
+                    displayLabel='Location Preferences'
+                    fieldValue={locationPreference}
+                    labelClassList="font-bold"
+                    optionItems={locationPreferenceOptionItems}
+                    isRadio={true}
+                    boxWrapperClassList="col-span-2"
+                />
+                <CheckboxFormGroup
+                    fieldName="equipment"
+                    onChange={setEquipment}
+                    displayLabel='Equipment Needs'
+                    fieldValue={equipment}
+                    optionItems={equipmentOptionItems}
+                    labelClassList="font-bold"
+                    boxWrapperClassList="col-span-2"
+                />
+            </div>
         </FormWrapper>
     );
 }

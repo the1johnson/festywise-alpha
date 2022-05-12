@@ -28,8 +28,8 @@ export default function GigManager(params: GigManagerType) {
     }
     return (
         <>
-            <div className='flex items-center mt-10'>
-                <h3 className='font-bold tracking-wide'>Gigs Manager</h3>
+            <div className='flex items-center'>
+                <div>Gigs Manager</div>
                 <button
                     onClick={()=>{
                         setDisplayTab('create')

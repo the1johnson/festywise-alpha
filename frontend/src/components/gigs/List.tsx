@@ -8,7 +8,7 @@ export default function GigList(params: GigListType) {
         params.toProfileTab(id)
     }
     return (<>
-        <h3 className='font-bold tracking-wide'>Gigs List</h3>
+        <div>Gigs List</div>
         {params.gigs.length ?
             <ul>
                 {params.gigs.map((gig: any) => {
