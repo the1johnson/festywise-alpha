@@ -74,7 +74,11 @@ const MapView: React.FC = () => {
           </Map>
         </Wrapper>
       </div>
-      <GigApplicationModal isActive={modalIsActive} key={`${applicationVenue.id}_${applicationGig.id}`} />
+      {applicationVenue && applicationGig ?
+        <GigApplicationModal isActive={modalIsActive} key={`${applicationVenue.id}_${applicationGig.id}`} />
+        : <></>
+      }
+
     </>
   );
 };
